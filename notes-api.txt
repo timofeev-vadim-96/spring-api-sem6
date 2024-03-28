@@ -1,0 +1,19 @@
+Две сущности. Пользователь и заметка. Связь один ко многим. В сущности пользователя содержится
+поле со списком заметок с каскадным удалением и с запретом существования сущностей-сирот.
+
+userController:
+
+GET /user - get all users
+GET /user/{id} - get user by id
+GET /user/{id}/notes - get all user's notes
+GET /user?userId=value&noteId=anotherValue - при явном указании параметров
+конфликта не будет(@GetMapping(params = {"userId", "noteId"})) - get a specific note from a specific user
+
+POST /user - add new user
+POST /user/{id}/note - add new note by user id
+
+PUT /user/{id} - change a user
+PUT /user/?userId=value&noteId=anotherValue - change user's some note
+
+DELETE /user/{id}
+DELETE /user?userId=value&noteId=anotherValue
